@@ -1,0 +1,51 @@
+﻿@model List<EmployeeModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@* 
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+ *@
+
+<h2>Employees</h2>
+@if(Model != null && Model.Count > 0)
+{
+
+    <table class="table">
+        <tr>
+            
+            <th>
+                Name
+            </th>
+            <th>
+                Total work hours
+            </th>
+        </tr>
+        @foreach (var e in Model)
+        {
+            if (e.EmployeeName != null)
+            {
+
+
+                var rowColor = (e.TotalTimeWorked < 100) ? "low-hours" : "";
+            <tr class="@rowColor">
+                <td>
+                    @e.EmployeeName
+                </td>
+                <td>
+                    @Math.Round(e.TotalTimeWorked, 1)
+                </td>
+            </tr>
+            }
+        }
+    </table>
+
+    
+}
+else
+{
+    <p>@ViewBag.Message</p>
+}
