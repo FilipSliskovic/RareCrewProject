@@ -22,5 +22,22 @@ body {
 }
 
 .low-hours{
-    background-color: #808080
+    background-color: slategray;
+}
+#PieChartDiv {
+    width: 600px;
+    height: 600px;
+    margin: 30px auto;
+}
+#downloadBTN {
+    float: right;
+    background-color: aquamarine;
+    border-radius: 10px;
+}
+#downloadBTN:hover{
+    transition:ease 0.5s;
+    border-radius: 0px;
+}
+tr:hover {
+    background-color: lightgray;
 }

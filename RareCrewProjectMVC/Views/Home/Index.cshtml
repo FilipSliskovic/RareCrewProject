@@ -1,4 +1,5 @@
-﻿@model List<EmployeeModel>
+﻿@using System.Web
+@model List<EmployeeModel>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -15,6 +16,7 @@
 {
 
     <table class="table">
+        <thead>
         <tr>
             
             <th>
@@ -24,6 +26,8 @@
                 Total work hours
             </th>
         </tr>
+        </thead>
+        <tbody>
         @foreach (var e in Model)
         {
             if (e.EmployeeName != null)
@@ -41,7 +45,53 @@
             </tr>
             }
         }
+        </tbody>
     </table>
+    
+    List<string> labels = new List<string>();
+    List<double> values = new List<double>();
+
+    foreach (var data in ViewBag.ChartData)
+    {
+        labels.Add("'" + data.Label + "'");
+        values.Add(data.Value);
+    }
+
+<div id="PieChartDiv">
+        <canvas id="employeeChart"></canvas>
+        <button id="downloadBTN">Download as .PNG</button>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+        var ctx = document.getElementById('employeeChart').getContext('2d');
+        var employeeChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: [@Html.Raw(string.Join(",", labels))],
+            datasets: [{
+                data: [@Html.Raw(string.Join(",", values))],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(145, 59, 52, 0.7)',
+                    'rgba(71, 145, 52, 0.7)',
+                    'rgba(52, 69, 145, 0.7)',
+                    // Add more colors as needed
+                ]
+            }]
+        }
+    });
+        document.getElementById('downloadBTN').addEventListener('click', function () {
+            var url = employeeChart.toBase64Image();
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = 'chart.png';
+        link.click();
+    });
+</script>
 
     
 }
