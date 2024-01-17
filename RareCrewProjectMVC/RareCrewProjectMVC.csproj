@@ -9,8 +9,6 @@
   <ItemGroup>
     <PackageReference Include="Chart.js" Version="3.7.1" />
     <PackageReference Include="ChartJSCore" Version="3.10.1" />
-    <PackageReference Include="Microsoft.AspNet.Razor" Version="3.3.0" />
-    <PackageReference Include="Microsoft.Web.Infrastructure" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

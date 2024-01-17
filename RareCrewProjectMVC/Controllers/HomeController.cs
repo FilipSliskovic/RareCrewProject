@@ -54,7 +54,6 @@ namespace RareCrewProjectMVC.Controllers
                 return View();
             }
 
-            return View();
         }
 
 

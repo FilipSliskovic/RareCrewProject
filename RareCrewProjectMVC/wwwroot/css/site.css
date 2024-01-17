@@ -31,12 +31,13 @@ body {
 }
 #downloadBTN {
     float: right;
-    background-color: aquamarine;
+    background-color: lightgray;
     border-radius: 10px;
 }
 #downloadBTN:hover{
     transition:ease 0.5s;
     border-radius: 0px;
+    background-color: gray;
 }
 tr:hover {
     background-color: lightgray;
